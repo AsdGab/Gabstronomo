@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "Sen";
+  src: url(assets/fonts/sen/Sen-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Sen-Bold";
+  src: url(assets/fonts/sen/Sen-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Sen-ExtraBold";
+  src: url(assets/fonts/sen/Sen-ExtraBold.ttf);
+}
+
+$accent-color: #c82c3c;
+$primary-color: #ffbf33;
+
+html,
+body {
+  height: 100%;
+  margin: 0 auto;
+}
+
+* {
+  font-family: "Sen-Bold";
+}
+
+// Material card
+
+.mat-mdc-card {
+  margin: 0px;
+  padding: 0px;
+  box-shadow: none;
+}
+
+#mat-tab-label-0-1 > span.mdc-tab__content > span,
+#mat-tab-label-0-0 > span.mdc-tab__content > span,
+#mat-tab-label-1-0 > span.mdc-tab__content > span,
+#mat-tab-label-1-1 > span.mdc-tab__content > span {
+  font-size: 24px;
+  font-family: "Sen-Bold";
+  color: $accent-color;
+}
+
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled)
+  .mdc-tab-indicator__content--underline {
+  border-color: $accent-color;
+}
+
+.mat-mdc-card-header {
+  padding: 0 !important;
+}
+
+.mdc-dialog .mdc-dialog__content {
+  padding: 0px 24px 0px 24px !important;
+}

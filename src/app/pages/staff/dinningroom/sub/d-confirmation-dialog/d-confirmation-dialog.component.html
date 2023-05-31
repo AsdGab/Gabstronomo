@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="border-container">
+    <div mat-dialog-content>
+      <p>{{ message }}</p>
+    </div>
+    <div class="buttons" mat-dialog-actions>
+      <button class="button" mat-fab (click)="closeDialog()">
+        <mat-icon>cancel</mat-icon>
+      </button>
+      <button class="button" mat-fab (click)="confirmed()" cdkFocusInitial>
+        <mat-icon>check_circle_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+.container {
+  height: 100%;
+  background-color: #ffbf33;
+  padding: 20px;
+  text-align: center;
+
+  .border-container {
+    height: 100%;
+    border: solid 3px #c82c3c;
+    border-radius: 20px;
+    padding: 20px;
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .button {
+        width: 64px;
+        height: 64px;
+        margin: 10px;
+        background-color: #ffbf33;
+        border: solid 3px #c82c3c;
+        box-shadow: none;
+
+        mat-icon {
+          color: #c82c3c;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+p {
+  color: black;
+}

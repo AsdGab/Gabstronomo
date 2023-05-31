@@ -1,0 +1,34 @@
+.img {
+  text-align: center;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+
+h2 {
+  padding: 0 10px 0 10px;
+  background-color: #c82c3c;
+  color: #ffbf33;
+}
+
+p {
+  padding: 0 10px 0 10px;
+  text-align: justify;
+  font-family: "Sen";
+}
+
+mat-card {
+  background-color: #ffbf33;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  border: solid 3px #c82c3c;
+  margin: 20px;
+  border-radius: 20px;
+}

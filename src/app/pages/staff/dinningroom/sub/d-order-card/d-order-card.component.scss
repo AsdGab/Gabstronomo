@@ -1,0 +1,71 @@
+.order {
+  height: 100%;
+  margin: 10px;
+  background-color: #ffbf33;
+  box-sizing: border-box;
+
+  h4,
+  h3 {
+    font-family: "Sen-Bold";
+    margin: 5px;
+    .new {
+      color: green;
+
+      padding: 0 10px 0 0px;
+    }
+
+    .process {
+      color: orangered;
+
+      padding: 0 10px 0 0px;
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    text-decoration: underline;
+  }
+
+  h4 {
+    font-size: 16px;
+    display: flex;
+  }
+
+  .buttons {
+    box-sizing: border-box;
+    size: 8%;
+    padding-bottom: 5px;
+
+    button {
+      height: 30px;
+      width: 30px;
+      margin: 10px;
+
+      background-color: #ffbf33;
+
+      box-shadow: none;
+
+      .disabled {
+        color: grey;
+      }
+
+      mat-icon {
+        color: #c82c3c;
+        font-weight: 800;
+      }
+    }
+  }
+
+  ul {
+    height: 80%;
+    overflow-y: scroll;
+    text-align: left;
+    font-size: 16px;
+    margin-top: 4px;
+    padding-left: 30px !important;
+  }
+}
+
+ul::-webkit-scrollbar {
+  width: 0;
+}

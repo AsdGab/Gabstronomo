@@ -1,0 +1,62 @@
+<mat-grid-list cols="4" rowHeight="320px" rowWidth="200px">
+  <mat-grid-tile
+    *ngFor="let item of items$ | async; let i = index"
+    [colspan]="1"
+    [rowspan]="1"
+  >
+    <mat-card
+      class="item"
+      [ngClass]="
+        i < 4 || i > 7
+          ? i % 2 == 0
+            ? 'even'
+            : 'odd'
+          : i % 2 == 0
+          ? 'odd'
+          : 'even'
+      "
+    >
+      <mat-card-header
+        [ngClass]="
+          i < 4 || i > 7
+            ? i % 2 == 0
+              ? 'even'
+              : 'odd'
+            : i % 2 == 0
+            ? 'odd'
+            : 'even'
+        "
+        ><p>
+          {{ item.name }} -
+          <b>{{ item.price | currency : "EUR" : "" : "1.2-2" }}</b>
+        </p>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="img">
+          <img
+            (click)="openItemDialog(item)"
+            src="../../../../../assets/images/{{ item.img }}.png"
+          />
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button
+          [disabled]="disableIfEmpty(item)"
+          [ngClass]="disableIfEmpty(item) ? 'disabled' : ''"
+          (click)="removeItemEmitter(itemType, item)"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+
+        <div class="counter" *ngIf="!disableIfEmpty(item)">
+          x{{ item.quantity }}
+        </div>
+
+        <button (click)="addItemEmitter(itemType, item)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

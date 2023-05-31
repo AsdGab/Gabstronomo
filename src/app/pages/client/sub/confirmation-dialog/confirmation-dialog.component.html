@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="border-container">
+    <ng-container *ngIf="pendingAnswer">
+      <h1>Estás a solo un paso...</h1>
+      <div mat-dialog-content>
+        <p>
+          ¿Quieres confirmar el <b>{{ message.questionBold }}?</b
+          >{{ message.question2 }}
+        </p>
+      </div>
+      <div class="buttons" mat-dialog-actions>
+        <button class="button" mat-fab (click)="closeDialog()">
+          <mat-icon>cancel</mat-icon>
+        </button>
+        <button class="button" mat-fab (click)="confirmed()" cdkFocusInitial>
+          <mat-icon>check_circle_outline</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+
+    <div class="confirmation" *ngIf="!pendingAnswer">
+      <p>
+        {{ message.confirmation1 }}
+      </p>
+
+      <div class="progress">
+        <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+      </div>
+      <p>
+        {{ message.confirmation2 }}
+      </p>
+    </div>
+  </div>
+</div>

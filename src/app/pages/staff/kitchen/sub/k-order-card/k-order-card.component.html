@@ -1,0 +1,55 @@
+<ng-container *ngIf="item">
+  <mat-card class="order">
+    <h3>Mesa: #</h3>
+
+    <h4>
+      <span
+        *ngIf="item.dishesState != 'Finalizada'"
+        [ngClass]="item.dishesState == 'Nueva' ? 'new' : 'process'"
+        ><mat-icon>radio_button_checked</mat-icon>
+      </span>
+      {{ item.dishesState }}
+    </h4>
+    <ul>
+      <li *ngFor="let dish of item.orderedDishes">
+        {{ dish.quantity }}x {{ dish.name }}
+      </li>
+    </ul>
+    <div class="buttons">
+      <button
+        *ngIf="item.dishesState != 'Finalizada'"
+        mat-mini-fab
+        [disabled]="item.dishesState == 'Nueva'"
+        (click)="stateBackOrderEmitter(item)"
+      >
+        <mat-icon [ngClass]="item.dishesState == 'Nueva' ? 'disabled' : ''"
+          >navigate_before</mat-icon
+        >
+      </button>
+      <button
+        *ngIf="item.dishesState != 'Finalizada'"
+        mat-mini-fab
+        [disabled]="item.dishesState == 'En proceso'"
+        (click)="stateForwardOrderEmitter(item)"
+      >
+        <mat-icon [ngClass]="item.dishesState == 'En proceso' ? 'disabled' : ''"
+          >navigate_next</mat-icon
+        >
+      </button>
+      <button
+        mat-mini-fab
+        *ngIf="item.dishesState != 'Finalizada'"
+        (click)="openFinishedDialog(item)"
+      >
+        <mat-icon>fast_forward</mat-icon>
+      </button>
+      <button
+        mat-mini-fab
+        *ngIf="item.dishesState == 'Finalizada'"
+        (click)="openUnfinishedDialog(item)"
+      >
+        <mat-icon>fast_rewind</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</ng-container>

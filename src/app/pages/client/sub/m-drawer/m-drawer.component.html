@@ -1,0 +1,180 @@
+<div class="container">
+  <h2>Mesa #</h2>
+
+  <ng-container *ngIf="drawerType == 'currentOrder'">
+    <div *ngIf="selectedDishes.length !== 0" class="current-dishes">
+      <h3>Burgers</h3>
+      <ul>
+        <li class="grid" *ngFor="let item of selectedDishes">
+          <div class="one">
+            <p>
+              <span class="bold">{{ item.quantity! }}x</span> {{ item.name }}
+            </p>
+          </div>
+          <div class="two">
+            <button
+              class="no-background"
+              (click)="removeItemEmitter('dishes', item)"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+            <button
+              class="no-background"
+              (click)="addItemEmitter('dishes', item)"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="three">
+            <p>
+              ({{ item.price | currency : "EUR" : "" : "1.2-2" }}) <br />
+              <span class="bold">{{
+                item.price * item.quantity!
+                  | currency : "EUR" : "symbol" : "1.2-2"
+              }}</span>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="selectedDrinks.length !== 0" class="current-drinks">
+      <h3>Bebidas</h3>
+      <ul>
+        <li class="grid" *ngFor="let item of selectedDrinks">
+          <div class="one">
+            <p>
+              <span class="bold"> {{ item.quantity! }}x</span>
+              {{ item.name }}
+            </p>
+          </div>
+          <div class="two">
+            <button
+              class="no-background"
+              (click)="removeItemEmitter('drinks', item)"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+            <button
+              class="no-background"
+              (click)="addItemEmitter('drinks', item)"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="three">
+            <p>
+              ({{ item.price | currency : "EUR" : "" : "1.2-2" }})<br />
+              <span class="bold">{{
+                item.price * item.quantity!
+                  | currency : "EUR" : "symbol" : "1.2-2"
+              }}</span>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div
+      *ngIf="selectedDishes.length == 0 && selectedDrinks.length == 0"
+      class="empty-order"
+    >
+      <p><b>¡Aun no has pedido nada!</b></p>
+    </div>
+    <h4>
+      Total:
+      <span class="bold">{{
+        orderPrice | currency : "EUR" : "symbol" : "1.2-2"
+      }}</span>
+    </h4>
+
+    <div class="buttons">
+      <button
+        [ngClass]="
+          selectedDishes.length == 0 && selectedDrinks.length == 0
+            ? 'disabled'
+            : ''
+        "
+        mat-fab
+        [disabled]="selectedDrinks.length == 0 && selectedDishes.length == 0"
+        (click)="resetOrderEmitter()"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+      <button
+        [ngClass]="
+          selectedDishes.length == 0 && selectedDrinks.length == 0
+            ? 'disabled'
+            : ''
+        "
+        mat-fab
+        [disabled]="selectedDrinks.length == 0 && selectedDishes.length == 0"
+        (click)="openOrderDialog()"
+      >
+        <mat-icon>check_circle_outline</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="drawerType == 'totalOrder'">
+    <div *ngIf="totalDishes.length !== 0" class="total-dishes">
+      <h3>Burgers</h3>
+      <ul>
+        <li *ngFor="let item of totalDishes">
+          <p>
+            <span class="bold">{{ item.quantity! }}x</span> {{ item.name }}
+          </p>
+          <p>
+            ({{ item.price | currency : "EUR" : "" : "1.2-2" }})
+            <span class="bold">{{
+              item.price * item.quantity!
+                | currency : "EUR" : "symbol" : "1.2-2"
+            }}</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="totalDrinks.length !== 0" class="total-drinks">
+      <h3>Bebidas</h3>
+      <ul>
+        <li *ngFor="let item of totalDrinks">
+          <p>
+            <span class="bold">{{ item.quantity! }}x</span> {{ item.name }}
+          </p>
+          <p>
+            ({{ item.price | currency : "EUR" : "" : "1.2-2" }})
+            <span class="bold">{{
+              item.price * item.quantity!
+                | currency : "EUR" : "symbol" : "1.2-2"
+            }}</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div
+      *ngIf="totalDishes.length == 0 && totalDrinks.length == 0"
+      class="empty-order"
+    >
+      <p><b>¡Aun no has pedido nada!</b></p>
+    </div>
+
+    <h4>
+      Total:
+      <span class="bold">{{
+        totalPrice | currency : "EUR" : "symbol" : "1.2-2"
+      }}</span>
+    </h4>
+
+    <div class="buttons">
+      <button
+        [ngClass]="
+          totalDishes.length == 0 && totalDrinks.length == 0 ? 'disabled' : ''
+        "
+        mat-fab
+        [disabled]="totalDishes.length == 0 && totalDrinks.length == 0"
+        (click)="openPaymentDialog()"
+      >
+        <mat-icon>check_circle_outline</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+</div>

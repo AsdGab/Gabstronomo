@@ -1,0 +1,62 @@
+.container {
+  height: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: #ffbf33;
+
+  .border {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: solid 3px #c82c3c;
+
+    .logo {
+      padding-bottom: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 30%;
+
+      h1 {
+        font-size: 96px;
+        font-family: "Sen-ExtraBold";
+        color: #c82c3c;
+
+        .accent {
+          color: #ffbf33;
+          text-shadow: -2px 0 #c82c3c, 0 2px #c82c3c, 2px 0 #c82c3c,
+            0 -2px #c82c3c;
+          border-radius: 20px;
+        }
+      }
+    }
+
+    .buttons {
+      height: 65%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      button {
+        margin: 20px;
+        width: 80px;
+        height: 80px;
+        font-size: 18px;
+        border-radius: 20px;
+        border: solid 3px #c82c3c;
+        background-color: #ffbf33;
+      }
+    }
+
+    .footer {
+      height: 5%;
+      text-align: end;
+      padding-right: 20px;
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}

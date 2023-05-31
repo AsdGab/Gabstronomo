@@ -1,0 +1,62 @@
+.container {
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #ffbf33;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: "Sen-Bold";
+  font-size: 16px;
+  color: #c82c3c;
+}
+
+p {
+  font-family: "Sen";
+  font-size: 20px;
+  color: black;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: 64px;
+    height: 64px;
+    margin: 10px;
+    background-color: #ffbf33;
+    border: solid 3px #c82c3c;
+    box-shadow: none;
+
+    mat-icon {
+      color: #c82c3c;
+      font-weight: 600;
+    }
+  }
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding: 25px 20px 25px 20px;
+}
+
+.progress {
+  width: 90%;
+  margin: 20px 30px 20px 10px;
+  box-sizing: border-box;
+}
+
+.border-container {
+  border: solid 3px #c82c3c;
+  margin: 20px;
+  border-radius: 20px;
+}

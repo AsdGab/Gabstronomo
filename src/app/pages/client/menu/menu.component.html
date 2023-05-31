@@ -1,0 +1,78 @@
+<mat-drawer-container>
+  <mat-drawer-content>
+    <div class="body">
+      <div class="logo">
+        <h1>Gabstr<span class="accent">o</span>nomo</h1>
+      </div>
+      <mat-tab-group color="primary">
+        <mat-tab label="Burgers">
+          <div class="section burgers">
+            <app-menu-section
+              [itemType]="type1"
+              [itemList]="selectedDishes"
+              (addDish)="addDish($event)"
+              (removeDish)="removeDish($event)"
+            ></app-menu-section>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Bebidas">
+          <div class="section drinks">
+            <app-menu-section
+              [itemType]="type2"
+              [itemList]="selectedDrinks"
+              (addDrink)="addDrink($event)"
+              (removeDrink)="removeDrink($event)"
+            ></app-menu-section>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="buttons">
+      <button mat-fab (click)="drawer.toggle(); drawerType = 'currentOrder'">
+        <mat-icon>fastfood</mat-icon>
+      </button>
+
+      <button
+        mat-fab
+        (click)="drawer.toggle(); unifyOrders(); drawerType = 'totalOrder'"
+      >
+        <mat-icon>payment</mat-icon>
+      </button>
+
+      <button mat-fab (click)="resetCurrentOrder()">
+        <mat-icon>cancel</mat-icon>
+      </button>
+
+      <button mat-fab (click)="resetCurrentOrder()">
+        <mat-icon>face</mat-icon>
+      </button>
+    </div>
+  </mat-drawer-content>
+
+  <mat-drawer
+    #drawer
+    mode="over"
+    position="end"
+    disableClose="false"
+    opened="false"
+  >
+    <app-m-drawer
+      [drawerType]="drawerType"
+      [selectedDishes]="selectedDishes"
+      [selectedDrinks]="selectedDrinks"
+      [orderPrice]="orderPrice"
+      [totalDishes]="totalDishes"
+      [totalDrinks]="totalDrinks"
+      [totalPrice]="totalPrice"
+      (placeOrder)="placeOrder(); drawer.toggle()"
+      (resetCurrentOrder)="resetCurrentOrder()"
+      (addDish)="addDish($event)"
+      (addDrink)="addDrink($event)"
+      (removeDish)="removeDish($event)"
+      (removeDrink)="removeDrink($event)"
+      (payOrders)="payOrders(); drawer.toggle()"
+      (unifyOrders)="unifyOrders()"
+    ></app-m-drawer>
+  </mat-drawer>
+</mat-drawer-container>

@@ -1,0 +1,98 @@
+mat-grid-list {
+  margin: 20px;
+  box-sizing: border-box;
+
+  mat-grid-tile {
+    box-sizing: border-box;
+  }
+}
+
+.item {
+  background-color: #ffbf33;
+
+  mat-card-header {
+    margin: 0 auto;
+    text-align: center;
+    color: #c82c3c;
+    font-size: 16px;
+
+    p {
+      font-family: "Sen-Bold";
+      font-size: 18px;
+    }
+  }
+
+  mat-card-content {
+    margin: auto;
+    padding: 0;
+
+    div {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  mat-card-actions {
+    padding: 0 24px 0 24px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      border: none;
+      background-color: #ffbf33;
+
+      mat-icon {
+        color: #c82c3c;
+        font-weight: 900;
+        font-size: 30px;
+      }
+    }
+
+    .disabled {
+      mat-icon {
+        color: grey;
+      }
+    }
+  }
+
+  .counter {
+    color: black;
+
+    font-size: 16px;
+    font-family: "Sen-ExtraBold";
+  }
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.odd img {
+  background-color: #c82c3c;
+}
+
+.even img {
+  border: solid 2px black;
+}
+
+.even p {
+  background-color: #c82c3c;
+  color: #ffbf33;
+  padding: 3px;
+}
+
+.odd p {
+  border: solid 2px #c82c3c;
+  color: black;
+  padding: 3px;
+}

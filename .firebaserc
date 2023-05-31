@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gabstronomo-9fb6c": {
+      "hosting": {
+        "Gabstronomo": [
+          "gabstronomo-9fb6c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gabstronomo-9fb6c"
+  }
+}
