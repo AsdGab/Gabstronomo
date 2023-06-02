@@ -39,6 +39,7 @@ import { KOrderCardComponent } from './pages/staff/kitchen/sub/k-order-card/k-or
 import { KConfirmationDialogComponent } from './pages/staff/kitchen/sub/k-confirmation-dialog/k-confirmation-dialog.component';
 import { DConfirmationDialogComponent } from './pages/staff/dinningroom/sub/d-confirmation-dialog/d-confirmation-dialog.component';
 import { DOrderCardComponent } from './pages/staff/dinningroom/sub/d-order-card/d-order-card.component';
+import { TableDialogComponent } from './pages/client/sub/table-dialog/table-dialog.component';
 
 registerLocaleData(localeEs, 'es-ES', localeEsExtra);
 
@@ -57,6 +58,7 @@ registerLocaleData(localeEs, 'es-ES', localeEsExtra);
     KConfirmationDialogComponent,
     DConfirmationDialogComponent,
     DOrderCardComponent,
+    TableDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,11 @@
-import { Drink } from './drinkModel';
 import { Dish } from './dishModel';
+import { Drink } from './drinkModel';
 
-export class Order {
+export class Ticket {
   uID: string;
   orderedDishes: Dish[];
   orderedDrinks: Drink[];
   totalPrice: number;
-  paid: boolean;
-  dishesState: string;
-  drinksState: string;
 
   public constructor(
     orderedDishes: Dish[],
@@ -19,8 +16,5 @@ export class Order {
     this.orderedDishes = orderedDishes;
     this.orderedDrinks = orderedDrinks;
     this.totalPrice = totalPrice;
-    this.paid = false;
-    this.dishesState = orderedDishes.length > 0 ? 'Nueva' : 'Finalizada';
-    this.drinksState = orderedDrinks.length > 0 ? 'Nueva' : 'Finalizada';
   }
 }

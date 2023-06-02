@@ -119,11 +119,10 @@ export class OrdersService {
   }
 
   create(newOrder: Order) {
-    let date = Date.now().toString();
-
-    newOrder.uID = date;
-
-    return setDoc(doc(this.firestore, 'orders', date), newOrder);
+    return setDoc(
+      doc(this.firestore, 'orders', newOrder.uID),
+      JSON.parse(JSON.stringify(newOrder))
+    );
   }
 
   async updatePaid() {

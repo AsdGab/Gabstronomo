@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
 import { Dish } from 'src/app/models/dishModel';
 import { Drink } from 'src/app/models/drinkModel';
 import { Order } from 'src/app/models/orderModel';
+import { Ticket } from 'src/app/models/ticketModel';
 import { OrdersService } from 'src/app/services/orders/orders.service';
+import { TicketsService } from 'src/app/services/tickets/tickets.service';
 
 @Component({
   selector: 'app-menu',
@@ -30,7 +33,11 @@ export class MenuComponent implements OnInit {
     this.getOrders();
   }
 
-  constructor(private ordersService: OrdersService) {}
+  constructor(
+    private ordersService: OrdersService,
+    private ticketsService: TicketsService,
+    private tableDialog: MatDialog
+  ) {}
 
   getOrders() {
     this.orders$ = this.ordersService.getNotPaid();
@@ -82,7 +89,13 @@ export class MenuComponent implements OnInit {
   }
 
   payOrders() {
+    let newTicket: Ticket = new Ticket(
+      this.totalDishes,
+      this.totalDrinks,
+      this.totalPrice
+    );
     this.ordersService.updatePaid();
+    this.ticketsService.create(newTicket);
   }
 
   // Current Order
@@ -144,15 +157,12 @@ export class MenuComponent implements OnInit {
   }
 
   placeOrder(): void {
-    let newOrder: Order = {
-      uID: '',
-      orderedDishes: this.selectedDishes,
-      orderedDrinks: this.selectedDrinks,
-      totalPrice: this.orderPrice,
-      paid: false,
-      dishesState: 'Nueva',
-      drinksState: 'Nueva',
-    };
+    let newOrder: Order = new Order(
+      this.selectedDishes,
+      this.selectedDrinks,
+      this.orderPrice
+    );
+
     this.ordersService.create(newOrder);
     this.resetCurrentOrder();
   }
