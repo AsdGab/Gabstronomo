@@ -7,6 +7,7 @@ import { Order } from 'src/app/models/orderModel';
 import { Ticket } from 'src/app/models/ticketModel';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import { TicketsService } from 'src/app/services/tickets/tickets.service';
+import { TableDialogComponent } from '../sub/table-dialog/table-dialog.component';
 
 @Component({
   selector: 'app-menu',
@@ -17,6 +18,7 @@ export class MenuComponent implements OnInit {
   type1: string = 'dishes';
   type2: string = 'drinks';
   drawerType: string = '';
+  table: number = 0;
 
   selectedDishes: Dish[] = [];
   selectedDrinks: Drink[] = [];
@@ -27,9 +29,8 @@ export class MenuComponent implements OnInit {
   totalDrinks: Drink[] = [];
   totalPrice: number = 0;
 
-  isExpanded: boolean = false;
-
-  async ngOnInit(): Promise<void> {
+  async ngOnInit() {
+    this.openTableDialog();
     this.getOrders();
   }
 
@@ -171,5 +172,14 @@ export class MenuComponent implements OnInit {
     this.selectedDishes = [];
     this.selectedDrinks = [];
     this.orderPrice = 0;
+  }
+
+  openTableDialog() {
+    this.tableDialog
+      .open(TableDialogComponent, { disableClose: true })
+      .afterClosed()
+      .subscribe((table: number) => {
+        this.table = table;
+      });
   }
 }

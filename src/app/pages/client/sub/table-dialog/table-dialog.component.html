@@ -1,1 +1,3 @@
-<p>table-dialog works!</p>
+<p>Elige mesa:</p>
+
+<button *ngFor="let item of tables$ | async">{{ item.number }}</button>

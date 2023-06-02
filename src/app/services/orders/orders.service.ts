@@ -32,8 +32,6 @@ export class OrdersService {
 
     orders$ = collectionData(coll);
 
-    console.log(orders$);
-
     return orders$;
   }
 

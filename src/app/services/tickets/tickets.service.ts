@@ -1,23 +1,12 @@
 import { Injectable } from '@angular/core';
-import {
-  CollectionReference,
-  DocumentData,
-  Firestore,
-  collection,
-  doc,
-  setDoc,
-} from '@angular/fire/firestore';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 import { Ticket } from 'src/app/models/ticketModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TicketsService {
-  private ticketsCollection: CollectionReference<DocumentData>;
-
-  constructor(private firestore: Firestore) {
-    this.ticketsCollection = collection(this.firestore, 'tickets');
-  }
+  constructor(private firestore: Firestore) {}
 
   create(newTicket: Ticket) {
     return setDoc(
